@@ -1,0 +1,29 @@
+{
+  "name": "46shops",
+  "version": "1.0.0",
+  "description": "The Shopping App For MP46",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node Backend/server",
+    "server": "nodemon Backend/server",
+    "client": "npm start --prefix frontent",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node Backend/seeder",
+    "data:destroy": "node Backend/seeder -d"
+  },
+  "author": "Sanket Bagad",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "concurrently": "^6.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2"
+  }
+}
