@@ -17,6 +17,7 @@ import { ORDER_CREATE_FAIL,
         ORDER_DELIVER_SUCCESS,
         ORDER_DELIVER_FAIL} from "../constants/orderConstants"
 import axios from "axios"
+import { logout } from "./userActions"
 
         export const createOrder = (order) => async (dispatch, getState) => {
             try {
@@ -45,8 +46,8 @@ import axios from "axios"
             } catch (error) {
                 dispatch({
                     type: ORDER_CREATE_FAIL,
-                    payload: error.response && error.response.data.message ? error.
-                    response.data.message : error.message, 
+                    payload: error.response && error.response.data.message ? error
+                    .response.data.message : error.message, 
                 })
             }
         }
@@ -73,15 +74,22 @@ import axios from "axios"
                     type: ORDER_DETAILS_SUCCESS,
                     payload: data
                 })
+                
         
-            } catch (error) {
+            }  catch (error) {
+                const message =
+                  error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message
+                if (message === 'Not authorized, token failed') {
+                  dispatch(logout())
+                }
                 dispatch({
-                    type: ORDER_DETAILS_FAIL,
-                    payload: error.response && error.response.data.message ? error.
-                    response.data.message : error.message, 
+                  type: ORDER_DETAILS_FAIL,
+                  payload: message,
                 })
+              }
             }
-        }
         
         export const payOrder = (orderId, paymentResult) => async (dispatch, getState) => {
             try {
@@ -111,8 +119,8 @@ import axios from "axios"
             } catch (error) {
                 dispatch({
                     type: ORDER_PAY_FAIL,
-                    payload: error.response && error.response.data.message ? error.
-                    response.data.message : error.message, 
+                    payload: error.response && error.response.data.message ? error
+                    .response.data.message : error.message, 
                 })
             }
         }
@@ -144,8 +152,8 @@ import axios from "axios"
             } catch (error) {
                 dispatch({
                     type: ORDER_DELIVER_FAIL,
-                    payload: error.response && error.response.data.message ? error.
-                    response.data.message : error.message, 
+                    payload: error.response && error.response.data.message ? error
+                    .response.data.message : error.message, 
                 })
             }
         }
@@ -177,8 +185,8 @@ import axios from "axios"
             } catch (error) {
                 dispatch({
                     type: ORDER_LIST_MY_FAIL,
-                    payload: error.response && error.response.data.message ? error.
-                    response.data.message : error.message, 
+                    payload: error.response && error.response.data.message ? error
+                    .response.data.message : error.message, 
                 })
             }
         }
@@ -209,8 +217,8 @@ import axios from "axios"
             } catch (error) {
                 dispatch({
                     type: ORDER_LIST_FAIL,
-                    payload: error.response && error.response.data.message ? error.
-                    response.data.message : error.message, 
+                    payload: error.response && error.response.data.message ? error
+                    .response.data.message : error.message, 
                 })
             }
         }

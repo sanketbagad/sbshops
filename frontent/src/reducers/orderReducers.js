@@ -35,7 +35,7 @@ export const orderCreateReducer = (state ={}, action) => {
                }
           case ORDER_CREATE_FAIL:
                return {
-                    loading: true,
+                    loading: false,
                     error: action.payload
                }
           default:

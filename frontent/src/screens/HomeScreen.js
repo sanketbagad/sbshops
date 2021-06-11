@@ -32,9 +32,7 @@ const HomeScreen = ({ match }) => {
         <Meta />
         {!keyword ? (
             <> 
-            <h1>Welcome To ShopJam.com</h1>        
-              <p>  As You Get One Of The Best Deals At Very Cheap Price. Its Built For You By You...
-            </p>
+            <h1>Welcome To 46Shops.com</h1>        
             </>
         ) : (
             <Link to="/" className="btn btn-light">

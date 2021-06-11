@@ -12,7 +12,7 @@ const Meta = ({ title, description, keywords }) => {
 }
 
 Meta.defaultProps = {
-    title: "Welcome to ShopJam",
+    title: "Welcome to 46Shops",
     keywords: "MP46, Sanket Bagad, SB, Online Shopping, Khetia, Shahada, khetia, shahada, khetia shopping, 46Shops",
     description: "We Sell Best Products At Cheap Price In Khetia Shahada And Nearby Areas In MP46 and MH39"
 }
