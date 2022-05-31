@@ -22,7 +22,10 @@ const Product = ( {product} ) => {
         </Card.Text>
 
         <Card.Text as="h3">
-        <i className="fas fa-rupee-sign"></i>{product.price}
+        {/* <i className="fas fa-rupee-sign"></i>{product.price} */}
+        {/* (\u20A8) {product.price} */}
+        {/* displaying rupee sigh with respect to unicode */}
+        <i className="fas fa-rupee-sign"></i>{product.price.toLocaleString()}
         </Card.Text>
         </Card.Body>
         </Card>
