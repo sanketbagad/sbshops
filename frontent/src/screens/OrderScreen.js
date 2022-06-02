@@ -124,6 +124,7 @@ const OrderScreen = ({ match, history }) => {
               <p>
                 <strong>Method: </strong>
                 {order.paymentMethod}
+                {console.log(order.paymentMethod)}
               </p>
               {order.isPaid ? (
                 <Message variant='success'>Paid on {order.paidAt}</Message>
@@ -200,12 +201,21 @@ const OrderScreen = ({ match, history }) => {
                   {loadingPay && <Loader />}
                   {!sdkReady ? (
                     <Loader />
-                  ) : (
+                  ) : order.paymentMethod === 'Paypal' ? (
                     <PayPalButton
                       amount={order.totalPrice}
                       onSuccess={successPaymentHandler}
                     />
-                  )}
+                  ) : (
+                    // button for Cash on Delivery
+                    <Button
+                      variant='primary'
+                      onClick={successPaymentHandler}
+                      > Cash on Delivery
+                    </Button>
+                  )
+
+                  }
                 </ListGroup.Item>
               )}
               {loadingDeliver && <Loader />}
